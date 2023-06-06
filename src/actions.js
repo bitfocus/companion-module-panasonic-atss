@@ -159,19 +159,19 @@ export function getActionDefinitions(self){
 		name: 'Tracking On/Off',
 		options: [],
 		callback: async(action)=>{
-			if(self.tracking=="OFF"){
-				self.tracking="ON"
-				self.setVariable("tracking",self.tracking)
-
+			if(self.data.tracking=="OFF"){
+				self.data.tracking="ON"
 				await sendTracking('start')
-				//self.checkFeedbacks()
+
+				self.checkVariables()
+				self.checkFeedbacks()
 			}
 			else if(self.tracking == "ON"){
-				self.tracking="OFF"
-				self.setVariable("tracking",self.tracking)
-
+				self.data.tracking="OFF"
 				await sendTracking('stop')
-				//self.checkFeedbacks()
+				
+				self.checkVariables()
+				self.checkFeedbacks()				
 			}
 		}
 	}
@@ -180,10 +180,12 @@ export function getActionDefinitions(self){
 		name: 'Set Angle to Upper',
 		options: [],
 		callback: async(action)=>{
-			if(self.angle!="UPPER"){
-				self.angle="UPPER"
-				self.setVariable("angle",self.angle)
-
+			if(self.data.angle!="UPPER"){
+				self.data.angle="UPPER"
+				self.checkVariables()
+				// self.setVariable("angle",self.data.angle)
+				
+				self.checkFeedbacks()
 				await sendAngle('upper')
 				//self.checkFeedbacks()
 			}
@@ -197,10 +199,11 @@ export function getActionDefinitions(self){
 		name: 'Set Angle to Body',
 		options: [],
 		callback: async(action)=>{
-			if(self.angle!="BODY"){
-				self.angle="BODY"
-				self.setVariable("angle",self.angle)
-
+			if(self.data.angle!="BODY"){
+				self.data.angle="BODY"
+				self.checkVariables()
+				// self.setVariable("angle",self.data.angle)
+				self.checkFeedbacks()
 				await sendAngle('body')
 				//self.checkFeedbacks()
 			}
@@ -214,10 +217,11 @@ export function getActionDefinitions(self){
 		name: 'Set Angle to Full',
 		options: [],
 		callback: async(action)=>{
-			if(self.angle!="FULL"){
-				self.angle="FULL"
-				self.setVariable("angle",self.angle)
-
+			if(self.data.angle!="FULL"){
+				self.data.angle="FULL"
+				self.checkVariables()
+				// self.setVariable("angle",self.data.angle)
+				self.checkFeedbacks()
 				await sendAngle('full')
 				//self.checkFeedbacks()
 			}
@@ -231,10 +235,11 @@ export function getActionDefinitions(self){
 		name: 'Set Angle to Off',
 		options: [],
 		callback: async(action)=>{
-			if(self.angle!="OFF"){
-				self.angle="OFF"
-				self.setVariable("angle",self.angle)
-
+			if(self.data.angle!="OFF"){
+				self.data.angle="OFF"
+				self.checkVariables()
+				// self.setVariable("angle",self.data.angle)
+				self.checkFeedbacks()
 				await sendAngle('off')
 				//self.checkFeedbacks()
 			}
@@ -325,7 +330,8 @@ export function getActionDefinitions(self){
 			}
 		],
 		callback: async (action)=>{
-			self.config.cameraid=action.options.val
+			self.config.cameraid = action.options.val
+			self.data.cameraid=action.options.val
 		}
 	}
 

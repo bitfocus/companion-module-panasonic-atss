@@ -5,6 +5,7 @@ export function setVariables(self){
 
     const variables = []
 
+    
     variables.push({ variableId: 'cameraid', name: 'Camera ID' })
 	variables.push({ variableId: 'tracking', name: 'Tracking Status' })
 	variables.push({ variableId: 'angle', name: 'Angle Status' })

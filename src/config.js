@@ -18,9 +18,9 @@ export const ConfigFields = [
         type: 'textinput',
         id: 'httpPort',
         label: 'HTTP Port (Default: 80)',
-        width: 3,
+        width: 4,
         default: 1337,
-        regex: self.REGEX_PORT,
+        // regex: self.REGEX_PORT,
     },
     {
         type: 'text',

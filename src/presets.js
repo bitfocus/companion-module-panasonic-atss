@@ -4,33 +4,29 @@ export function getPresetDefinitions(self){
     const presets={}
 
 
-    presets['communication-start'] = {
-        type: 'button',
-        category: "Camera Control",
-        name: "Communication Start",
-        style: {
-			text: '',
-			png64: self.ICON_POWER_ON,
-			pngalignment: 'center:center',
-			size: '18',
-			color: '16777215',
-			bgcolor: self.rgb(0, 0, 0),
-        },
-        steps: [
-            {
-                down: [
-                    {
-                        actionId: 'cameraControl',
-                        options:{
-                            mode: 'on'
-                        },
-                    }
-                ],
+    // presets['communication-start'] = {
+    //     type: 'button',
+    //     category: "Camera Control",
+    //     name: "Communication Start",
+    //     style: {
+	// 		text: '',
+	// 		png64: self.ICON_POWER_ON,
+	// 		pngalignment: 'center:center',
+	// 		size: '18',
+    //     },
+    //     steps: [
+    //         {
+    //             down: [
+    //                 {
+    //                     actionId: 'cameraControlOn',
+    //                     options:{},
+    //                 }
+    //             ],
 
-            }
-        ],
-        feedbacks: [],
-    }
+    //         }
+    //     ],
+    //     feedbacks: [],
+    // }
 
 
     presets['tracking-on-off']={
@@ -47,7 +43,7 @@ export function getPresetDefinitions(self){
             {
                 down: [
                     {
-                        actionId: '',
+                        actionId: 'trackingOnOff',
                         options: {
                             
                         }
@@ -55,9 +51,15 @@ export function getPresetDefinitions(self){
                 ]
             }
         ],
-        feedback: [
+        feedbacks: [
             {
-
+                feedbackId: 'trackingState',
+                options: {
+                    option: '0',
+                },
+                style: {
+                    png64: self.icons.btn_tracking_mode_start_disable,
+                }
             }
         ]
     }
@@ -77,7 +79,7 @@ export function getPresetDefinitions(self){
             {
                 down: [
                     {
-                        actionId: '',
+                        actionId: 'angleUpper',
                         options: {
                             
                         }
@@ -85,9 +87,15 @@ export function getPresetDefinitions(self){
                 ]
             }
         ],
-        feedback: [
+        feedbacks: [
             {
-
+                feedbackId:'angleUpperState',
+                options:{
+                    option:'0',
+                },
+                style:{
+                    png64: self.icons.btn_angle_upperBody_disable,
+                },
             }
         ]
     }
@@ -107,7 +115,7 @@ export function getPresetDefinitions(self){
             {
                 down: [
                     {
-                        actionId: '',
+                        actionId: 'angleBody',
                         options: {
                             
                         }
@@ -115,14 +123,20 @@ export function getPresetDefinitions(self){
                 ]
             }
         ],
-        feedback: [
+        feedbacks: [
             {
-
+                feedbackId:'angleBodyState',
+                options:{
+                    option:'0',
+                },
+                style:{
+                    png64: self.icons.btn_angle_fullBody_disable,
+                },
             }
         ]
     }
 
-    presets["angle-upper"]={
+    presets["angle-full"]={
         type: 'button',
         category: 'Angle',
         name: 'Angle Full',
@@ -136,7 +150,7 @@ export function getPresetDefinitions(self){
             {
                 down: [
                     {
-                        actionId: '',
+                        actionId: 'angleFull',
                         options: {
                             
                         }
@@ -144,9 +158,15 @@ export function getPresetDefinitions(self){
                 ]
             }
         ],
-        feedback: [
+        feedbacks: [
             {
-
+                feedbackId:'angleFullState',
+                options:{
+                    option:'0',
+                },
+                style:{
+                    png64: self.icons.btn_angle_full_disable,
+                },
             }
         ]
     }
@@ -165,7 +185,7 @@ export function getPresetDefinitions(self){
             {
                 down: [
                     {
-                        actionId: '',
+                        actionId: 'angleOff',
                         options: {
                             
                         }
@@ -173,9 +193,15 @@ export function getPresetDefinitions(self){
                 ]
             }
         ],
-        feedback: [
+        feedbacks: [
             {
-
+                feedbackId:'angleOffState',
+                options:{
+                    option:'0',
+                },
+                style:{
+                    png64: self.icons.btn_angle_off_disable,
+                },
             }
         ]
     }
