@@ -1,11 +1,11 @@
 {
 	"id": "panasonic-atss",
 	"name": "panasonic-atss",
-	"shortname": "Autotracking",
-	"description": "Panasonic Autotracking Server",
+	"shortname": "Panasonic-Autotracking",
+	"description": "Companion module for Panasonic Autotracking Servers",
 	"version": "0.0.0",
 	"license":"MIT",
-	"repository": "https://github.com/bitfocus/companion-module-undefined.git",
+	"repository": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git",
 	"bugs": "https://github.com/bitfocus/companion-module-undefined/issues",
 	"maintainers": [
 		{

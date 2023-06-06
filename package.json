@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/bitfocus/companion-module-undefined.git"
+		"url": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git"
 	},
 	"license": "MIT",
   "dependencies": {
