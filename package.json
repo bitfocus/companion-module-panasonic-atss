@@ -1,0 +1,21 @@
+{
+  "name": "panasonic-atss",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bitfocus/companion-module-undefined.git"
+	},
+	"license": "MIT",
+  "dependencies": {
+    "@companion-module/base": "~1.4.1",
+	"got":"^12.5.3"
+  },
+  "devDependencies": {
+    "@companion-module/tools": "^1.2.1"
+  }
+}
