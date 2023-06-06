@@ -25,6 +25,7 @@ class PanasonicATSSInstance extends InstanceBase{
 
 		this.data = {
 			debug: false,
+			// cameracount: '9',
 			cameraid: '1',
 			tracking: 'ON',
 			angle: 'UPPER'

@@ -169,7 +169,7 @@ export function getActionDefinitions(self){
 			else if(self.tracking == "ON"){
 				self.data.tracking="OFF"
 				await sendTracking('stop')
-				
+
 				self.checkVariables()
 				self.checkFeedbacks()				
 			}
@@ -332,6 +332,9 @@ export function getActionDefinitions(self){
 		callback: async (action)=>{
 			self.config.cameraid = action.options.val
 			self.data.cameraid=action.options.val
+			self.checkVariables()
+				// self.setVariable("angle",self.data.angle)
+			self.checkFeedbacks()
 		}
 	}
 

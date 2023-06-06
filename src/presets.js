@@ -1,4 +1,7 @@
 
+import { combineRgb } from '@companion-module/base'
+const backgroundColorRed = combineRgb(255, 0, 0) // Red
+
 
 export function getPresetDefinitions(self){
     const presets={}
@@ -44,9 +47,7 @@ export function getPresetDefinitions(self){
                 down: [
                     {
                         actionId: 'trackingOnOff',
-                        options: {
-                            
-                        }
+                        options: {}
                     }
                 ]
             }
@@ -80,9 +81,7 @@ export function getPresetDefinitions(self){
                 down: [
                     {
                         actionId: 'angleUpper',
-                        options: {
-                            
-                        }
+                        options: {}
                     }
                 ]
             }
@@ -116,9 +115,7 @@ export function getPresetDefinitions(self){
                 down: [
                     {
                         actionId: 'angleBody',
-                        options: {
-                            
-                        }
+                        options: {}
                     }
                 ]
             }
@@ -151,9 +148,7 @@ export function getPresetDefinitions(self){
                 down: [
                     {
                         actionId: 'angleFull',
-                        options: {
-                            
-                        }
+                        options: {}
                     }
                 ]
             }
@@ -186,9 +181,77 @@ export function getPresetDefinitions(self){
                 down: [
                     {
                         actionId: 'angleOff',
-                        options: {
-                            
+                        options: {}
+                    }
+                ]
+            }
+        ],
+        feedbacks: [
+            {
+                feedbackId:'angleOffState',
+                options:{
+                    option:'0',
+                },
+                style:{
+                    png64: self.icons.btn_angle_off_disable,
+                },
+            }
+        ]
+    }
+
+    for (let cameranum = 1; cameranum < 15; cameranum++ ){
+        presets[`select-camera-${cameranum}`] = {
+            type: 'button',
+            category: 'Select Camera',
+            name: 'Select Camera ' + parseInt(cameranum),
+            style: {
+                text: 'Camera\\nID\\n' + parseInt(cameranum),
+                size: '14',
+                color: 16777215,
+                bgcolor: combineRgb(0,0,0),
+            },
+            steps: [
+                {
+                    down: [
+                        {
+                            actionId: 'setCameraId',
+                            options: {
+                                val: `${cameranum}`
+                            }
                         }
+                    ],
+                    up: [],
+                }
+            ],
+            feedbacks: [
+                {
+                    feedbackId: 'cameraState',
+                    options: {
+                        option: `${cameranum}`
+                    },
+                    style: {
+                        bgcolor: backgroundColorRed
+                    }
+                }
+            ], 
+        }
+    }
+
+    presets["current-camera"]={
+        type: 'button',
+        category: 'Camera ID',
+        name: 'Current Camera',
+        style:{
+            text: self.data.cameraid,
+            size: '18',
+        }
+        ,
+        steps:[
+            {
+                down: [
+                    {
+                        actionId: 'angleOff',
+                        options: {}
                     }
                 ]
             }

@@ -34,6 +34,13 @@ export function checkVariables(self){
         angle: self.data.angle
     })
 
+    if(self.config.debug){
+        console.log("VARIABLES")
+        console.log(`Camera ID: ${self.data.cameraid}`)
+        console.log(`Tracking: ${self.data.tracking}`)
+        console.log(`Angle: ${self.data.angle}`)
+    }
+
     // self.setVariable('cameraid', self.cameraid)
     // self.setVariable('tracking', self.tracking)
     // self.setVariable('angle', self.angle)
