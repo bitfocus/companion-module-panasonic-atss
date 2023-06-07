@@ -31,9 +31,6 @@ class PanasonicATSSInstance extends InstanceBase{
 			angle: 'UPPER'
 		}
 
-		// this.cameraid = '1'
-		// this.tracking = 'ON'
-		// this.angle = 'UPPER'
 		
 		this.config.host = this.config.host || ''
 		this.config.httpPort = this.config.httpPort || 80
@@ -41,6 +38,7 @@ class PanasonicATSSInstance extends InstanceBase{
 		this.config.password = this.config.password || ''
 		this.config.cameraid = this.config.cameraid || 1
 		this.config.debug = this.config.debug || false
+
 
 		this.updateStatus(InstanceStatus.Connecting)
 		this.init_actions()
@@ -55,7 +53,7 @@ class PanasonicATSSInstance extends InstanceBase{
 
 	async configUpdated(config){
 		this.config = config
-		this.updateStatus(InstanceStatus.Connecting)
+		this.updateStatus(InstanceStatus.Ok)
 		this.init_actions()
 		this.init_presets()
 		this.init_variables()

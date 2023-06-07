@@ -312,6 +312,10 @@ export function getActionDefinitions(self){
 		}
 	}
 
+
+
+
+	
 	actions.setCameraId={
 		name: "Set Camera ID",
 		options:[
@@ -319,22 +323,16 @@ export function getActionDefinitions(self){
 				type: 'dropdown',
 				label: 'Camera ID',
 				id: 'val',
-				default: '0',
-				choices: [
-					{ id: '0', label: 'Camera ID: 0'},
-					{ id: '1', label: 'Camera ID: 1'},
-					{ id: '2', label: 'Camera ID: 2'},
-					{ id: '3', label: 'Camera ID: 3'},
-					{ id: '4', label: 'Camera ID: 4'},
-				]
+				default: '1',
 			}
 		],
 		callback: async (action)=>{
 			self.config.cameraid = action.options.val
-			self.data.cameraid=action.options.val
+			self.data.cameraid = action.options.val
+			
+
 			self.checkVariables()
-				// self.setVariable("angle",self.data.angle)
-			self.checkFeedbacks()
+			self.checkFeedbacks()			
 		}
 	}
 

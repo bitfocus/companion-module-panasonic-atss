@@ -1,45 +1,24 @@
 export const ConfigFields = [
     {
-        type: 'text',
+        type: 'static-text',
         id: 'info',
         width: 12,
         label: 'Information',
         value:
-            "This module controls Panasonic ATSS.",
+            "This module controls Panasonic Autotracking Servers.",
     },
     {
         type: 'textinput',
         id: 'host',
         label: 'Server IP',
         width: 4,
-        // regex: self.REGEX_IP
     },
     {
         type: 'textinput',
         id: 'httpPort',
         label: 'HTTP Port (Default: 80)',
-        width: 4,
+        width: 5,
         default: 1337,
-        // regex: self.REGEX_PORT,
-    },
-    {
-        type: 'text',
-        id: 'dummy1',
-        width: 12,
-        label: ' ',
-        value: ' ',
-    },
-    {
-        type: 'textinput',
-        id: 'username',
-        label: 'Server Username',
-        width: 8
-    },
-    {
-        type: 'textinput',
-        id: 'password',
-        label: 'Server Password',
-        width: 8
     },
     {
         type: 'textinput',

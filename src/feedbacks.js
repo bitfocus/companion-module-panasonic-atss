@@ -48,22 +48,22 @@ export function getFeedbackDefinitions(self) {
 			return false
 		},
 	}
-	feedbacks.angleUpperState = {
-		type: 'boolean',
-		name: 'Angle - Angle Upper State',
-		description: 'What Angle Upper state is curently selected on the camera',
-		defaultStyle: {
-			png64: self.icons.btn_angle_upperBody_disable,
-		},
+
+	feedbacks.angleState={
+		type:'boolean',
+		name: 'Angle - Angle State',
+		description: 'Indicate which angle is selected',
 		options: [
 			{
 				type: 'dropdown',
 				label: 'Select State',
 				id: 'option',
-				default: '0',
+				default: 'UPPER',
 				choices: [
-					{ id: '0', label: 'OFF' },
-					{ id: '1', label: 'ON' },
+					{ id: 'UPPER', label: 'UPPER' },
+					{ id: 'BODY', label: 'BODY' },
+					{ id: 'FULL', label: 'FULL' },
+					{ id: 'OFF', label: 'OFF' },
 					
 				],
 			},
@@ -71,61 +71,26 @@ export function getFeedbackDefinitions(self) {
 		callback: function (feedback) {
 			const opt = feedback.options
 			switch (opt.option) {
-				case '0':
-					// console.log("case0(UPPER)ANGLE IS "+self.data.angle)
-					if (self.data.angle != 'UPPER') {
+				case 'UPPER':
+					if (self.data.angle === 'UPPER') {
 						return true
 					}
 					break
-				case '1':
-					// console.log("case1(UPPER)ANGLE IS "+self.data.angle)
-					if (self.data.angle == 'UPPER') {
+				case 'BODY':
+					if (self.data.angle === 'BODY') {
 						return true
 					}
 					break
-				
-				default:
-					break
-			}
-			return false
-		},
-	}
-	feedbacks.angleOffState={
-		type: 'boolean',
-		name: 'Angle - Angle Off State',
-		description: 'What Angle Off state is curently selected on the camera',
-		defaultStyle: {
-			png64: self.icons.btn_angle_off_disable,
-		},
-		options: [
-			{
-				type: 'dropdown',
-				label: 'Select State',
-				id: 'option',
-				default: '0',
-				choices: [
-					{ id: '0', label: 'OFF' },
-					{ id: '1', label: 'ON' },
-					
-				],
-			},
-		],
-		callback: function (feedback) {
-			const opt = feedback.options
-			switch (opt.option) {
-				case '0':
-					// console.log("case 0(OFF) ANGLE IS "+self.data.angle)
-					if (self.data.angle != 'OFF') {
+				case 'FULL':
+					if (self.data.angle === 'FULL') {
 						return true
 					}
 					break
-				case '1':
-					// console.log("case 1(OFF) ANGLE IS "+self.data.angle)
-					if (self.data.angle == 'OFF') {
+				case 'OFF':
+					if (self.data.angle === 'OFF') {
 						return true
 					}
 					break
-				
 				default:
 					break
 			}
@@ -133,100 +98,11 @@ export function getFeedbackDefinitions(self) {
 		},
 	}
 
-	feedbacks.angleBodyState={
-		type: 'boolean',
-		name: 'Angle - Angle Body State',
-		description: 'What Angle Body state is curently selected on the camera',
-		defaultStyle: {
-			png64: self.icons.btn_angle_fullBody_disable,
-		},
-		options: [
-			{
-				type: 'dropdown',
-				label: 'Select State',
-				id: 'option',
-				default: '0',
-				choices: [
-					{ id: '0', label: 'OFF' },
-					{ id: '1', label: 'ON' },
-					
-				],
-			},
-		],
-		callback: function (feedback) {
-			const opt = feedback.options
-			switch (opt.option) {
-				case '0':
-					// console.log("case 0(BODY) ANGLE IS "+self.data.angle)
-					if (self.data.angle != 'BODY') {
-						return true
-					}
-					break
-				case '1':
-					// console.log("case 1(BODY) ANGLE IS "+self.data.angle)
-					if (self.data.angle == 'BODY') {
-						return true
-					}
-					break
-				
-				default:
-					break
-			}
-			return false
-		},
-	}
-	feedbacks.angleFullState={
-		type: 'boolean',
-		name: 'Angle - Angle Full State',
-		description: 'What Angle Full state is curently selected on the camera',
-		defaultStyle: {
-			png64: self.icons.btn_angle_full_disable,
-		},
-		options: [
-			{
-				type: 'dropdown',
-				label: 'Select State',
-				id: 'option',
-				default: '0',
-				choices: [
-					{ id: '0', label: 'OFF' },
-					{ id: '1', label: 'ON' },
-					
-				],
-			},
-		],
 
-		callback: function (feedback) {
-			const opt = feedback.options
-			switch (opt.option) {
-				case '0':
-					// console.log("case 0(FULL) ANGLE IS "+self.data.angle)
-					if (self.data.angle != 'FULL') {
-						return true
-					}
-					break
-				case '1':
-					// console.log("case 1(FULL) ANGLE IS "+self.data.angle)
-					if (self.data.angle == 'FULL') {
-						return true
-					}
-					break
-				
-				default:
-					break
-			}
-			return false
-		},
-	}
-
-	// for (let cameranum=1; cameranum<100; cameranum++){
-	// 	feedbacks.
+	// const cameraChoice = []
+	// for (let cameranum = 1; cameranum<100; cameranum++){
+	// 	cameraChoice.push({id:`${cameranum}`, label: `${cameranum}`})
 	// }
-
-	const cameraChoice = []
-	for (let cameranum = 1; cameranum<100; cameranum++){
-		cameraChoice.push({id:`${cameranum}`, label: `${cameranum}`})
-	}
 	feedbacks.cameraState = {
 		type: 'boolean',
 		name: 'Camera ID',
@@ -239,8 +115,8 @@ export function getFeedbackDefinitions(self) {
 				type: 'dropdown',
 				label: 'Select Camera ID',
 				id: 'option',
-				default: '1',
-				choices: cameraChoice
+				// default: '1',
+				// // choices: cameraChoice
 			}
 		],
 		callback: function (feedback) {
@@ -252,6 +128,9 @@ export function getFeedbackDefinitions(self) {
 		}
 
 	}
+
+
+
 	return feedbacks
 }
 
