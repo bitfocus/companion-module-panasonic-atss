@@ -1,47 +1,40 @@
 // ##########################
 // #### Define Variables ####
 // ##########################
-export function setVariables(self){
+export function setVariables(self) {
+  const variables = [];
 
-    const variables = []
+  variables.push({ variableId: "cameraid", name: "Camera ID" });
+  variables.push({ variableId: "tracking", name: "Tracking Status" });
+  variables.push({ variableId: "angle", name: "Angle Status" });
 
-    
-    variables.push({ variableId: 'cameraid', name: 'Camera ID' })
-	variables.push({ variableId: 'tracking', name: 'Tracking Status' })
-	variables.push({ variableId: 'angle', name: 'Angle Status' })
-
-
-
-    return variables
+  return variables;
 }
-
-
 
 // #########################
 // #### Check Variables ####
 // #########################
-export function checkVariables(self){
+export function checkVariables(self) {
+  // if (self.config.cameraid === '') {
+  //     self.cameraid = '1'
+  // } else {
+  //     self.cameraid = self.config.cameraid
+  // }
 
-    // if (self.config.cameraid === '') {
-    //     self.cameraid = '1'
-    // } else {
-    //     self.cameraid = self.config.cameraid
-    // }
+  self.setVariableValues({
+    cameraid: self.data.cameraid,
+    tracking: self.data.tracking,
+    angle: self.data.angle,
+  });
 
-    self.setVariableValues({
-        cameraid: self.data.cameraid,
-        tracking: self.data.tracking,
-        angle: self.data.angle
-    })
+  if (self.config.debug) {
+    console.log("VARIABLES");
+    console.log(`Camera ID: ${self.data.cameraid}`);
+    console.log(`Tracking: ${self.data.tracking}`);
+    console.log(`Angle: ${self.data.angle}`);
+  }
 
-    if(self.config.debug){
-        console.log("VARIABLES")
-        console.log(`Camera ID: ${self.data.cameraid}`)
-        console.log(`Tracking: ${self.data.tracking}`)
-        console.log(`Angle: ${self.data.angle}`)
-    }
-
-    // self.setVariable('cameraid', self.cameraid)
-    // self.setVariable('tracking', self.tracking)
-    // self.setVariable('angle', self.angle)
+  // self.setVariable('cameraid', self.cameraid)
+  // self.setVariable('tracking', self.tracking)
+  // self.setVariable('angle', self.angle)
 }

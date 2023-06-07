@@ -1,27 +1,26 @@
 {
-	"id": "panasonic-atss",
-	"name": "panasonic-atss",
-	"shortname": "Panasonic-Autotracking",
-	"description": "Companion module for Panasonic Autotracking Servers",
-	"version": "0.0.0",
-	"license":"MIT",
-	"repository": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git",
-	"bugs": "https://github.com/bitfocus/companion-module-undefined/issues",
-	"maintainers": [
-		{
-			"name": "Reggie Erciyas",
-			"email": "contact@erciyas.tech"
-		}
-	],
-	"legacyIds": [],
-	"runtime": {
-		"type": "node18",
-		"api": "nodejs-ipc",
-		"apiVersion": "0.0.0",
-		"entrypoint": "../src/index.js"
-	},
-	"manufacturer": "Panasonic",
-	"products": ["Autotracking Server"],
-	"keywords": ["panasonic", "autotracking", "atss"]
+  "id": "panasonic-atss",
+  "name": "panasonic-atss",
+  "shortname": "Panasonic-Autotracking",
+  "description": "Companion module for Panasonic Autotracking Servers",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git",
+  "bugs": "https://github.com/bitfocus/companion-module-undefined/issues",
+  "maintainers": [
+    {
+      "name": "Reggie Erciyas",
+      "email": "contact@erciyas.tech"
+    }
+  ],
+  "legacyIds": [],
+  "runtime": {
+    "type": "node18",
+    "api": "nodejs-ipc",
+    "apiVersion": "0.0.0",
+    "entrypoint": "../src/index.js"
+  },
+  "manufacturer": "Panasonic",
+  "products": ["Autotracking Server"],
+  "keywords": ["panasonic", "autotracking", "atss"]
 }
-

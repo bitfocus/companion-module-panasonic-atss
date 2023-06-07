@@ -1,7 +1,3 @@
-
-
-
-
 **TODO**
 
 - Dynamic Camera ID Population (required querying server for info)
