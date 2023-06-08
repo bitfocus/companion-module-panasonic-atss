@@ -1,17 +1,17 @@
 {
   "name": "panasonic-atss",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "src/index.js",
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"format": "prettier -w ."
 	},
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git"
 	},
-	"license": "MIT",
   "dependencies": {
     "@companion-module/base": "~1.4.1",
 	"got":"^12.5.3",

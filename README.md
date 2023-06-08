@@ -2,6 +2,8 @@
 
 # companion-module-panasonic-atss
 
+Bitfocus Companion module that allows you to execute Panasonic Auto Tracking Software/Server functions with ease.
+
 **TODO**
 
 - Dynamic Camera ID Population (required querying server for info)
