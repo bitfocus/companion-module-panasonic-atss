@@ -5,8 +5,8 @@
   "description": "Companion module for Panasonic Autotracking Servers",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "git+https://github.com/rerciyas/companion-module-panasonic-atss.git",
-  "bugs": "https://github.com/rerciyas/companion-module-panasonic-atss/issues",
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-atss.git",
+  "bugs": "https://github.com/bitfocus/companion-module-panasonic-atss/issues",
   "maintainers": [
     {
       "name": "Reggie Erciyas",
