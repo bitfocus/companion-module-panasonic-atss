@@ -5,6 +5,7 @@ export function setVariables(self) {
   const variables = [];
 
   variables.push({ variableId: "cameraid", name: "Camera ID" });
+  variables.push({ variableId: "communication", name: "Communication Status" });
   variables.push({ variableId: "tracking", name: "Tracking Status" });
   variables.push({ variableId: "angle", name: "Angle Status" });
 
@@ -23,6 +24,7 @@ export function checkVariables(self) {
 
   self.setVariableValues({
     cameraid: self.data.cameraid,
+    communication: self.data.communication,
     tracking: self.data.tracking,
     angle: self.data.angle,
   });
@@ -30,6 +32,7 @@ export function checkVariables(self) {
   if (self.config.debug) {
     console.log("VARIABLES");
     console.log(`Camera ID: ${self.data.cameraid}`);
+    console.log(`Communication: ${self.data.communication}`);
     console.log(`Tracking: ${self.data.tracking}`);
     console.log(`Angle: ${self.data.angle}`);
   }

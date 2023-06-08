@@ -4,6 +4,48 @@
 export function getFeedbackDefinitions(self) {
   const feedbacks = {};
 
+  feedbacks.communicationState = {
+    type: "boolean",
+    name: "Camera Control - Communication State",
+    description: "What Communication state is the camera in currently",
+    defaultStyle: {
+        text: 'COMMUNICATION\\nOFF',
+  		  size: 'auto',
+        color: combineRgb(255, 255, 255),
+		    bgcolor: combineRgb(255, 0, 0),
+    },
+    options: [
+      {
+        type: "dropdown",
+        label: "Select State",
+        id: "option",
+        default: "STOP",
+        choices: [
+          {id:"STOP", label: "STOP"},
+          {id:"START", label: "START"}
+        ],
+      }
+    ],
+    callback: function(feedback){
+      const opt = feedback.options;
+      switch(opt.option){
+        case "STOP":
+          if(self.data.communication == "STOP"){
+            return true;
+          }
+          break;
+        case "START":
+          if(self.data.communication == "START"){
+            return true;
+          }
+          break;
+        default:
+          break;
+      }
+      return false;
+    },
+  },
+
   feedbacks.trackingState = {
     type: "boolean",
     name: "Tracking - Tracking State",
@@ -27,14 +69,12 @@ export function getFeedbackDefinitions(self) {
       const opt = feedback.options;
       switch (opt.option) {
         case "0":
-          // console.log("SELF TRACKING IS"+self.data.tracking)
           if (self.data.tracking == "OFF") {
             console.log("TRACKINGSTATE IS:" + feedbacks.trackingState);
             return true;
           }
           break;
         case "1":
-          // console.log("SELF TRACKING IS"+self.data.tracking)
           if (self.data.tracking == "ON") {
             console.log("TRACKINGSTATE IS:" + opt);
             return true;

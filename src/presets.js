@@ -4,29 +4,48 @@ const backgroundColorRed = combineRgb(255, 0, 0); // Red
 export function getPresetDefinitions(self) {
   const presets = {};
 
-  // presets['communication-start'] = {
-  //     type: 'button',
-  //     category: "Camera Control",
-  //     name: "Communication Start",
-  //     style: {
-  // 		text: '',
-  // 		png64: self.ICON_POWER_ON,
-  // 		pngalignment: 'center:center',
-  // 		size: '18',
-  //     },
-  //     steps: [
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'cameraControlOn',
-  //                     options:{},
-  //                 }
-  //             ],
 
-  //         }
-  //     ],
-  //     feedbacks: [],
-  // }
+
+  // ##########################
+  // # COMMUNICATION PRESETS  #
+  // ##########################
+  presets['communication-start-stop'] = {
+      type: 'button',
+      category: "Camera Control",
+      name: "Communication Start/Stop",
+      style: {
+  		  text: 'COMMUNICATION\\nON',
+  		  size: 'auto',
+        color: combineRgb(255, 255, 255),
+		    bgcolor: combineRgb(0, 255, 0),
+      },
+      steps: [
+          {
+              down: [
+                  {
+                      actionId: 'communicationOnOff',
+                      options:{},
+                  }
+              ],
+
+          }
+      ],
+      feedbacks: [
+        {
+          feedbackId: "communicationState",
+          options: {
+            option: "STOP",
+          },
+          style: {
+            text: 'COMMUNICATION\\nOFF',
+  		      size: 'auto',
+            color: combineRgb(255, 255, 255),
+		        bgcolor: combineRgb(255, 0, 0),
+          }
+        }
+      ],
+  };
+
 
   // ##########################
   // ##   TRACKING PRESETS   ##

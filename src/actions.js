@@ -24,7 +24,7 @@ export async function sendCameraState(self) {
   }
 }
 
-export async function sendCameraControl(self, str) {
+export async function sendCommunication(self, str) {
   if (str) {
     const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControl&id=${self.cameraid}&control=${str}`;
 
@@ -217,22 +217,25 @@ export function getActionDefinitions(self) {
   // ##########################
   // #### Camera Control   ####
   // ##########################
-  actions.cameraControlOn = {
-    name: "Communication Start",
+
+  actions.communicationOnOff = {
+    name: "Communication Start/Stop",
     options: [],
     callback: async (action) => {
-      await sendCameraControl(self, "start");
+      if(self.data.communication == "START"){
+        self.data.communication = "STOP";
+        await sendCommunication(self,"stop");
+        self.checkVariables();
+        self.checkFeedbacks();
+      }
+      else if(self.data.communication == "STOP"){
+        self.data.communication = "START";
+        await sendCommunication(self,"start");
+        self.checkVariables();
+        self.checkFeedbacks();
+      }
     },
   };
-
-  actions.cameraControlOff = {
-    name: "Communication Stop",
-    options: [],
-    callback: async (action) => {
-      await sendCameraControl(self, "stop");
-    },
-  };
-
 
   // ##########################
   // ####    Tracking      ####
@@ -247,7 +250,7 @@ export function getActionDefinitions(self) {
 
         self.checkVariables();
         self.checkFeedbacks();
-      } else if (self.tracking == "ON") {
+      } else if (self.data.tracking == "ON") {
         self.data.tracking = "OFF";
         await sendTracking(self, "stop");
 
@@ -440,7 +443,7 @@ export function getActionDefinitions(self) {
 
 
 
-  
+
 
   // ##########################
   // ##        Camera ID     ##

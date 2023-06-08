@@ -7,5 +7,6 @@ export const UpgradeScripts = [
     angleOffState: true,
     angleBodyState: true,
     angleFullState: true,
+    communicationState: true,
   }),
 ];
