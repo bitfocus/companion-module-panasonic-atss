@@ -3,6 +3,27 @@ import got from "got";
 // ######################
 // #### Send Actions ####
 // ######################
+
+export async function sendCameraState(self) {
+  
+  const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraState&id=${self.cameraid}`;
+
+  if (self.config.debug) {
+    self.log("debug", `Sending : ${url}`);
+  }
+
+  try {
+    const response = await got.get(url);
+
+    console.log("Result from REST:" + response.data);
+
+    return response;
+
+  } catch (err) {
+    throw new Error(`Action failed: ${url}`);
+  }
+}
+
 export async function sendCameraControl(self, str) {
   if (str) {
     const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControl&id=${self.cameraid}&control=${str}`;
@@ -129,12 +150,37 @@ export async function sendSetAutoFaceSearch(self, str) {
   }
 }
 
+
+
+
+
+
+
+
 // ##########################
 // #### Instance Actions ####
 // ##########################
 export function getActionDefinitions(self) {
   const actions = {};
+  
+  // ##########################
+  // #### Camera State     ####
+  // ##########################
+  actions.cameraState = {
+    name: "Aquire Camera State",
+    options: [],
+    callback: async (action) => {
+      const response = await sendCameraState(self);
+      if (self.config.debug) {
+        self.log("debug", `Response : ${response}`);
+      }
+    },
+  };
 
+
+  // ##########################
+  // #### Camera Control   ####
+  // ##########################
   actions.cameraControlOn = {
     name: "Communication Start",
     options: [],
@@ -151,6 +197,10 @@ export function getActionDefinitions(self) {
     },
   };
 
+
+  // ##########################
+  // ####    Tracking      ####
+  // ##########################
   actions.trackingOnOff = {
     name: "Tracking On/Off",
     options: [],
@@ -171,6 +221,10 @@ export function getActionDefinitions(self) {
     },
   };
 
+
+  // ##########################
+  // ####    Angle         ####
+  // ##########################
   actions.angleUpper = {
     name: "Set Angle to Upper",
     options: [],
@@ -240,6 +294,10 @@ export function getActionDefinitions(self) {
     },
   };
 
+
+  // ##########################
+  // #### Tracking Control ####
+  // ##########################
   actions.trackingControlOn = {
     name: "Tracking Control On",
     options: [],
@@ -256,6 +314,9 @@ export function getActionDefinitions(self) {
     },
   };
 
+  // ##########################
+  // ## Camera Control View  ##
+  // ##########################
   actions.cameraControlViewOn = {
     name: "Camera Control View On",
     options: [],
@@ -272,6 +333,9 @@ export function getActionDefinitions(self) {
     },
   };
 
+  // ##########################
+  // ## Face Recognition     ##
+  // ##########################
   actions.setFaceRecognitionOff = {
     name: "Set Face Recognition Off",
     options: [],
@@ -287,6 +351,9 @@ export function getActionDefinitions(self) {
     },
   };
 
+  // ##########################
+  // ## Auto Face Search     ##
+  // ##########################
   actions.setAutoFaceSearchOff = {
     name: "Set Auto Face Search Off",
     options: [],
@@ -303,6 +370,10 @@ export function getActionDefinitions(self) {
     },
   };
 
+
+  // ##########################
+  // ##        Camera ID     ##
+  // ##########################
   actions.setCameraId = {
     name: "Set Camera ID",
     options: [

@@ -28,6 +28,9 @@ export function getPresetDefinitions(self) {
   //     feedbacks: [],
   // }
 
+  // ##########################
+  // ##   TRACKING PRESETS   ##
+  // ##########################
   presets["tracking-on-off"] = {
     type: "button",
     category: "Tracking",
@@ -61,138 +64,10 @@ export function getPresetDefinitions(self) {
     ],
   };
 
-  // presets["angle-upper"]={
-  //     type: 'button',
-  //     category: 'Angle',
-  //     name: 'Angle Upper',
-  //     style: {
-  //         text: '',
-  //         png64: self.icons.btn_angle_upperBody_selected,
-  //         pngalignment: 'center:center',
-  //         size: '18',
-  //     },
-  //     steps:[
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'angleUpper',
-  //                     options: {}
-  //                 }
-  //             ]
-  //         }
-  //     ],
-  //     feedbacks: [
-  //         {
-  //             feedbackId:'angleUpperState',
-  //             options:{
-  //                 option:'0',
-  //             },
-  //             style:{
-  //                 png64: self.icons.btn_angle_upperBody_disable,
-  //             },
-  //         }
-  //     ]
-  // }
 
-  // presets["angle-body"]={
-  //     type: 'button',
-  //     category: 'Angle',
-  //     name: 'Angle Body',
-  //     style: {
-  //         text: '',
-  //         png64: self.icons.btn_angle_fullBody_selected,
-  //         pngalignment: 'center:center',
-  //         size: '18',
-  //     },
-  //     steps:[
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'angleBody',
-  //                     options: {}
-  //                 }
-  //             ]
-  //         }
-  //     ],
-  //     feedbacks: [
-  //         {
-  //             feedbackId:'angleBodyState',
-  //             options:{
-  //                 option:'0',
-  //             },
-  //             style:{
-  //                 png64: self.icons.btn_angle_fullBody_disable,
-  //             },
-  //         }
-  //     ]
-  // }
-
-  // presets["angle-full"]={
-  //     type: 'button',
-  //     category: 'Angle',
-  //     name: 'Angle Full',
-  //     style: {
-  //         text: '',
-  //         png64: self.icons.btn_angle_full_selected,
-  //         pngalignment: 'center:center',
-  //         size: '18',
-  //     },
-  //     steps:[
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'angleFull',
-  //                     options: {}
-  //                 }
-  //             ]
-  //         }
-  //     ],
-  //     feedbacks: [
-  //         {
-  //             feedbackId:'angleFullState',
-  //             options:{
-  //                 option:'0',
-  //             },
-  //             style:{
-  //                 png64: self.icons.btn_angle_full_disable,
-  //             },
-  //         }
-  //     ]
-  // }
-
-  // presets["angle-off"]={
-  //     type: 'button',
-  //     category: 'Angle',
-  //     name: 'Angle Off',
-  //     style: {
-  //         text: '',
-  //         png64: self.icons.btn_angle_off_selected,
-  //         pngalignment: 'center:center',
-  //         size: '18',
-  //     },
-  //     steps:[
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'angleOff',
-  //                     options: {}
-  //                 }
-  //             ]
-  //         }
-  //     ],
-  //     feedbacks: [
-  //         {
-  //             feedbackId:'angleOffState',
-  //             options:{
-  //                 option:'0',
-  //             },
-  //             style:{
-  //                 png64: self.icons.btn_angle_off_disable,
-  //             },
-  //         }
-  //     ]
-  // }
-
+  // ##########################
+  // ##    ANGLE PRESETS     ##
+  // ##########################
   presets["angle-upper"] = {
     type: "button",
     category: "Angle",
@@ -325,6 +200,10 @@ export function getPresetDefinitions(self) {
     ],
   };
 
+
+  // ##########################
+  // # SELECT CAMERA PRESETS  #
+  // ##########################
   for (let cameranum = 1; cameranum < 15; cameranum++) {
     presets[`select-camera-${cameranum}`] = {
       type: "button",
@@ -363,37 +242,6 @@ export function getPresetDefinitions(self) {
     };
   }
 
-  // presets["current-camera"]={
-  //     type: 'button',
-  //     category: 'Camera ID',
-  //     name: 'Current Camera',
-  //     style:{
-  //         text: self.data.cameraid,
-  //         size: '18',
-  //     }
-  //     ,
-  //     steps:[
-  //         {
-  //             down: [
-  //                 {
-  //                     actionId: 'angleOff',
-  //                     options: {}
-  //                 }
-  //             ]
-  //         }
-  //     ],
-  //     feedbacks: [
-  //         {
-  //             feedbackId:'angleOffState',
-  //             options:{
-  //                 option:'0',
-  //             },
-  //             style:{
-  //                 png64: self.icons.btn_angle_off_disable,
-  //             },
-  //         }
-  //     ]
-  // }
 
   return presets;
 }
