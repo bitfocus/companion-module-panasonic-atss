@@ -8,17 +8,15 @@
 
 
 **COMMANDS TO IMPLEMENT**
--Camera State
 
 -Set Face Recognition
     *Is it possible to portray faces on buttons? You can set 'face contents' in Edit Recognition command with JPEG base 64 string.
     You can retrieve base 64 string with 'Clip Face Image' command
 
--Get Face Recognition
 
 -Clip Face Image
 
--Auto Zoom
+
 
 
 
