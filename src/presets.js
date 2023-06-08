@@ -4,48 +4,44 @@ const backgroundColorRed = combineRgb(255, 0, 0); // Red
 export function getPresetDefinitions(self) {
   const presets = {};
 
-
-
   // ##########################
   // # COMMUNICATION PRESETS  #
   // ##########################
-  presets['communication-start-stop'] = {
-      type: 'button',
-      category: "Camera Control",
-      name: "Communication Start/Stop",
-      style: {
-  		  text: 'COMMUNICATION\\nON',
-  		  size: 'auto',
-        color: combineRgb(255, 255, 255),
-		    bgcolor: combineRgb(0, 255, 0),
-      },
-      steps: [
+  presets["communication-start-stop"] = {
+    type: "button",
+    category: "Camera Control",
+    name: "Communication Start/Stop",
+    style: {
+      text: "COMM.\\nOFF",
+      size: "8",
+      color: combineRgb(255, 255, 255),
+      bgcolor: combineRgb(255, 0, 0),
+    },
+    steps: [
+      {
+        down: [
           {
-              down: [
-                  {
-                      actionId: 'communicationOnOff',
-                      options:{},
-                  }
-              ],
-
-          }
-      ],
-      feedbacks: [
-        {
-          feedbackId: "communicationState",
-          options: {
-            option: "STOP",
+            actionId: "communicationOnOff",
+            options: {},
           },
-          style: {
-            text: 'COMMUNICATION\\nOFF',
-  		      size: 'auto',
-            color: combineRgb(255, 255, 255),
-		        bgcolor: combineRgb(255, 0, 0),
-          }
-        }
-      ],
+        ],
+      },
+    ],
+    feedbacks: [
+      {
+        feedbackId: "communicationState",
+        options: {
+          option: "START",
+        },
+        style: {
+          text: "COMM.\\nON",
+          size: "8",
+          color: combineRgb(255, 255, 255),
+          bgcolor: combineRgb(0, 255, 0),
+        },
+      },
+    ],
   };
-
 
   // ##########################
   // ##   TRACKING PRESETS   ##
@@ -82,7 +78,6 @@ export function getPresetDefinitions(self) {
       },
     ],
   };
-
 
   // ##########################
   // ##    ANGLE PRESETS     ##
@@ -219,7 +214,6 @@ export function getPresetDefinitions(self) {
     ],
   };
 
-
   // ##########################
   // # SELECT CAMERA PRESETS  #
   // ##########################
@@ -260,7 +254,6 @@ export function getPresetDefinitions(self) {
       ],
     };
   }
-
 
   return presets;
 }

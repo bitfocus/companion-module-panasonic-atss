@@ -5,8 +5,7 @@ import got from "got";
 // ######################
 
 export async function sendCameraState(self) {
-  
-  const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraState&id=${self.cameraid}`;
+  const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraState&id=${self.data.cameraid}`;
 
   if (self.config.debug) {
     self.log("debug", `Sending : ${url}`);
@@ -18,7 +17,6 @@ export async function sendCameraState(self) {
     console.log("Result from REST:" + response.data);
 
     return response;
-
   } catch (err) {
     throw new Error(`Action failed: ${url}`);
   }
@@ -26,7 +24,7 @@ export async function sendCameraState(self) {
 
 export async function sendCommunication(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControl&id=${self.cameraid}&control=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControl&id=${self.data.cameraid}&control=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -44,7 +42,7 @@ export async function sendCommunication(self, str) {
 
 export async function sendTracking(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=Tracking&id=${self.cameraid}&process=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=Tracking&id=${self.data.cameraid}&process=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -62,7 +60,7 @@ export async function sendTracking(self, str) {
 
 export async function sendAngle(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=Angle&id=${self.cameraid}&mode=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=Angle&id=${self.data.cameraid}&mode=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -80,7 +78,7 @@ export async function sendAngle(self, str) {
 
 export async function sendTrackingControl(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=TrackingControl&id=${self.cameraid}&enable=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=TrackingControl&id=${self.data.cameraid}&enable=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -98,7 +96,7 @@ export async function sendTrackingControl(self, str) {
 
 export async function sendCameraControlView(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControlView&id=${self.cameraid}&control=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=CameraControlView&id=${self.data.cameraid}&control=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -116,7 +114,7 @@ export async function sendCameraControlView(self, str) {
 
 export async function sendSetFaceRecognition(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=FaceRecognition&id=${self.cameraid}&mode=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=FaceRecognition&id=${self.data.cameraid}&mode=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -133,7 +131,6 @@ export async function sendSetFaceRecognition(self, str) {
 }
 
 export async function sendGetFaceRecognition(self) {
-  
   const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=GetFaceRecognition&page=0&data_num=16`;
 
   if (self.config.debug) {
@@ -146,7 +143,6 @@ export async function sendGetFaceRecognition(self) {
     console.log("Result from REST:" + response.data);
 
     return response;
-
   } catch (err) {
     throw new Error(`Action failed: ${url}`);
   }
@@ -154,7 +150,7 @@ export async function sendGetFaceRecognition(self) {
 
 export async function sendSetAutoFaceSearch(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=AutoFaceSearch&id=${self.cameraid}&mode=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=AutoFaceSearch&id=${self.data.cameraid}&mode=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -172,7 +168,7 @@ export async function sendSetAutoFaceSearch(self, str) {
 
 export async function sendAutoZoom(self, str) {
   if (str) {
-    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=AutoZoom&id=${self.cameraid}&mode=${str}`;
+    const url = `http://${self.config.host}:${self.config.httpPort}/cgi-bin/auto_tracking?cmd=AutoZoom&id=${self.data.cameraid}&mode=${str}`;
 
     if (self.config.debug) {
       self.log("debug", `Sending : ${url}`);
@@ -186,12 +182,6 @@ export async function sendAutoZoom(self, str) {
     }
   }
 }
-
-
-
-
-
-
 
 // ##########################
 // #### Instance Actions ####
@@ -213,7 +203,6 @@ export function getActionDefinitions(self) {
     },
   };
 
-
   // ##########################
   // #### Camera Control   ####
   // ##########################
@@ -222,17 +211,18 @@ export function getActionDefinitions(self) {
     name: "Communication Start/Stop",
     options: [],
     callback: async (action) => {
-      if(self.data.communication == "START"){
+      if (self.data.communication == "START") {
         self.data.communication = "STOP";
-        await sendCommunication(self,"stop");
         self.checkVariables();
         self.checkFeedbacks();
-      }
-      else if(self.data.communication == "STOP"){
+
+        await sendCommunication(self, "stop");
+      } else if (self.data.communication == "STOP") {
         self.data.communication = "START";
-        await sendCommunication(self,"start");
         self.checkVariables();
         self.checkFeedbacks();
+
+        await sendCommunication(self, "start");
       }
     },
   };
@@ -246,20 +236,19 @@ export function getActionDefinitions(self) {
     callback: async (action) => {
       if (self.data.tracking == "OFF") {
         self.data.tracking = "ON";
-        await sendTracking(self, "start");
-
         self.checkVariables();
         self.checkFeedbacks();
+
+        await sendTracking(self, "start");
       } else if (self.data.tracking == "ON") {
         self.data.tracking = "OFF";
-        await sendTracking(self, "stop");
-
         self.checkVariables();
         self.checkFeedbacks();
+
+        await sendTracking(self, "stop");
       }
     },
   };
-
 
   // ##########################
   // ####    Angle         ####
@@ -271,13 +260,13 @@ export function getActionDefinitions(self) {
       if (self.data.angle != "UPPER") {
         self.data.angle = "UPPER";
         self.checkVariables();
-        // self.setVariable("angle",self.data.angle)
-
         self.checkFeedbacks();
+
         await sendAngle(self, "upper");
-        //self.checkFeedbacks()
       } else {
-        //console.log("Angle was already UPPER")
+        if (self.config.debug) {
+          console.log("Angle was already UPPER");
+        }
       }
     },
   };
@@ -289,12 +278,13 @@ export function getActionDefinitions(self) {
       if (self.data.angle != "BODY") {
         self.data.angle = "BODY";
         self.checkVariables();
-        // self.setVariable("angle",self.data.angle)
         self.checkFeedbacks();
+
         await sendAngle(self, "body");
-        //self.checkFeedbacks()
       } else {
-        //console.log("Angle was already BODY")
+        if (self.config.debug) {
+          console.log("Angle was already BODY");
+        }
       }
     },
   };
@@ -306,12 +296,13 @@ export function getActionDefinitions(self) {
       if (self.data.angle != "FULL") {
         self.data.angle = "FULL";
         self.checkVariables();
-        // self.setVariable("angle",self.data.angle)
         self.checkFeedbacks();
+
         await sendAngle(self, "full");
-        //self.checkFeedbacks()
       } else {
-        //console.log("Angle was already FULL")
+        if (self.config.debug) {
+          console.log("Angle was already FULL");
+        }
       }
     },
   };
@@ -323,16 +314,16 @@ export function getActionDefinitions(self) {
       if (self.data.angle != "OFF") {
         self.data.angle = "OFF";
         self.checkVariables();
-        // self.setVariable("angle",self.data.angle)
         self.checkFeedbacks();
-        await sendAngle(self,"off");
-        //self.checkFeedbacks()
+
+        await sendAngle(self, "off");
       } else {
-        //console.log("Angle was already OFF")
+        if (self.config.debug) {
+          console.log("Angle was already OFF");
+        }
       }
     },
   };
-
 
   // ##########################
   // #### Tracking Control ####
@@ -341,7 +332,7 @@ export function getActionDefinitions(self) {
     name: "Tracking Control On",
     options: [],
     callback: async (action) => {
-      await sendTrackingControl(self,"on");
+      await sendTrackingControl(self, "on");
     },
   };
 
@@ -349,7 +340,7 @@ export function getActionDefinitions(self) {
     name: "Tracking Control Off",
     options: [],
     callback: async (action) => {
-      await sendTrackingControl(self,"off");
+      await sendTrackingControl(self, "off");
     },
   };
 
@@ -360,7 +351,7 @@ export function getActionDefinitions(self) {
     name: "Camera Control View On",
     options: [],
     callback: async (action) => {
-      await sendCameraControlView(self,"start");
+      await sendCameraControlView(self, "start");
     },
   };
 
@@ -368,7 +359,7 @@ export function getActionDefinitions(self) {
     name: "Camera Control View Off",
     options: [],
     callback: async (action) => {
-      await sendCameraControlView(self,"stop");
+      await sendCameraControlView(self, "stop");
     },
   };
 
@@ -390,16 +381,16 @@ export function getActionDefinitions(self) {
     },
   };
 
-  actions.getFaceRecognition ={
+  actions.getFaceRecognition = {
     name: "Get Face Recognition",
     options: [],
-    callback: async(action) => {
+    callback: async (action) => {
       const response = await sendGetFaceRecognition(self);
       if (self.config.debug) {
         self.log("debug", `Response : ${response}`);
       }
-    }
-  }
+    },
+  };
 
   // ##########################
   // ## Auto Face Search     ##
@@ -408,7 +399,7 @@ export function getActionDefinitions(self) {
     name: "Set Auto Face Search Off",
     options: [],
     callback: async (action) => {
-      await sendSetAutoFaceSearch(self,"0");
+      await sendSetAutoFaceSearch(self, "0");
     },
   };
 
@@ -416,11 +407,9 @@ export function getActionDefinitions(self) {
     name: "Set Auto Face Search On",
     options: [],
     callback: async (action) => {
-      await sendSetAutoFaceSearch(self,"1");
+      await sendSetAutoFaceSearch(self, "1");
     },
   };
-
-
 
   // ##########################
   // ##       Auto Zoom      ##
@@ -429,7 +418,7 @@ export function getActionDefinitions(self) {
     name: "Set Auto Zoom Off",
     options: [],
     callback: async (action) => {
-      await sendAutoZoom(self,"0");
+      await sendAutoZoom(self, "0");
     },
   };
 
@@ -437,13 +426,9 @@ export function getActionDefinitions(self) {
     name: "Set Auto Zoom On",
     options: [],
     callback: async (action) => {
-      await sendAutoZoom(self,"1");
+      await sendAutoZoom(self, "1");
     },
   };
-
-
-
-
 
   // ##########################
   // ##        Camera ID     ##

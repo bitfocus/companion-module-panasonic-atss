@@ -22,6 +22,8 @@ class PanasonicATSSInstance extends InstanceBase {
     this.config = config;
     this.icons = icons;
 
+    //Initial variable declaration. Right now for test purposes.
+    //get camera status can be called afterwards..
     this.data = {
       debug: false,
       cameraid: "1",
